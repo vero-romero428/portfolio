@@ -14,7 +14,7 @@ const { slug, title, summary, org } = Astro.props;
 <article class="work-card flow" style="--flow-space: var(--space-3)">
   <p class="label">{org}</p>
   <h3 class="work-card__title">
-    <a href={url(`work/${slug}`)}>{title}</a>
+    <a href={url(`work/${slug}/`)}>{title}</a>
   </h3>
   <p>{summary}</p>
 </article>

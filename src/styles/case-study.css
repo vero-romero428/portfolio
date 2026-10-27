@@ -1,0 +1,111 @@
+/* Styles for the Markdown inside a case study. Sections come from rehype-case-study.mjs. */
+
+.cs-section .container {
+  --flow-space: var(--space-4);
+}
+
+.cs-section h2 {
+  margin-bottom: var(--space-2);
+}
+
+/* A label sits tight above its heading */
+.cs-section .label + h2 {
+  --flow-space: var(--space-2);
+}
+
+.cs-section h3 {
+  --flow-space: var(--space-7);
+}
+
+.cs-section ul,
+.cs-section ol {
+  padding-left: 1.25em;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.cs-section li::marker {
+  color: var(--label-color);
+}
+
+/* Pull quote */
+.cs-section blockquote {
+  max-width: var(--measure);
+  padding-left: var(--space-5);
+  border-left: 3px solid var(--label-color);
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+}
+
+.cs-section blockquote p + p {
+  margin-top: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+}
+
+/* Image placeholders, until the real images arrive */
+.image-placeholder {
+  display: grid;
+  place-items: center;
+  max-width: 56rem;
+  aspect-ratio: 16 / 9;
+  padding: var(--space-5);
+  border: 2px dashed color-mix(in srgb, currentColor 35%, transparent);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+  text-align: center;
+  --flow-space: var(--space-6);
+}
+
+/* Results: big serif numbers as the visual punctuation */
+.results {
+  list-style: none;
+  padding: 0 !important;
+  gap: var(--space-6) !important;
+}
+
+@media (min-width: 48rem) {
+  .results {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+}
+
+.results__number {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-family: var(--font-serif);
+  font-weight: var(--weight-light);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-tight);
+  color: var(--number-color, var(--teal));
+}
+
+/* Stakeholder panels */
+.panels {
+  display: grid;
+  gap: var(--space-4);
+  --flow-space: var(--space-6);
+}
+
+@media (min-width: 56rem) {
+  .panels {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.panel {
+  padding: var(--space-5);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius);
+}
+
+.panel em:first-child {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-style: normal;
+  color: var(--teal);
+}

@@ -54,11 +54,11 @@ I took over the weekly Design Leadership meeting. It had a habit of circling wit
 
 ### Quality of work
 
-An Executive Design Director had a quality framework stuck in draft. I partnered with him to refine it and build a program around it. Project health went from 3.1 to 4.2 out of 5 over two quarters. [Link to the quality of work case study.]
+An Executive Design Director had a quality framework stuck in draft. I partnered with him to refine it and build a program around it. Project health went from 3.1 to 4.2 out of 5 over two quarters. [Read the quality of work case study](/work/quality-of-work/).
 
 ### Growth framework
 
-[Confirm your role in the first design-team version of the growth framework, before the company-wide redesign.] [Link to the growth framework case study.]
+[Confirm your role in the first design-team version of the growth framework, before the company-wide redesign.] [Read the growth framework case study](/work/growth-framework/).
 
 ## Results
 
