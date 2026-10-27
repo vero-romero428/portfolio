@@ -10,3 +10,6 @@ npm-debug.log*
 .env
 .env.*
 .DS_Store
+
+# Private project brief for Claude Code
+CLAUDE.md
