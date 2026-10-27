@@ -1,0 +1,39 @@
+---
+import { url } from '../utils/url';
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="site-header__name" href={url()}>Veronica Romero</a>
+    <a class="site-header__link" href={url('resume.pdf')}>Resume</a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background: var(--paper);
+    border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: 4rem;
+  }
+
+  .site-header__name {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .site-header__link {
+    font-weight: var(--weight-medium);
+    color: var(--ink);
+    /* Comfortable tap target on phones */
+    padding: var(--space-2) var(--space-1);
+  }
+</style>

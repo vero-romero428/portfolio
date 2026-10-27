@@ -1,19 +1,68 @@
 ---
-// Placeholder homepage for milestone 1. Replaced in milestone 3.
+// Milestone 2 preview: shows the design tokens on each section background.
+// Replaced by the real homepage in milestone 3.
+import Base from '../layouts/Base.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Veronica Romero</title>
-    <meta name="description" content="Design operations and people experience leader." />
-  </head>
-  <body>
-    <main>
+<Base
+  title="Veronica Romero: design operations and people experience leader"
+  description="Building the systems and conditions where teams can do their best work."
+>
+  <section class="section section--teal">
+    <div class="container flow" style="--flow-space: var(--space-5)">
+      <p class="label">Design operations and people experience leader</p>
       <h1>Veronica Romero</h1>
-      <p>Design operations and people experience leader.</p>
-      <p>This site is under construction. More soon.</p>
-    </main>
-  </body>
-</html>
+      <p class="lede">Building the systems and conditions where teams can do their best work.</p>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container flow">
+      <p class="label">Phase 1: Discovery and audit</p>
+      <h2>Redefining growth</h2>
+      <p>
+        I ran 20 sessions with employees, managers, and department leads to find where the
+        framework was creating friction, what was missing, and why people weren't using it.
+        Alongside that, I audited competency overlap, level progression logic, historical
+        promotion feedback, and the language patterns that had piled up over time without
+        adding clarity.
+      </p>
+      <p>
+        This is how body text reads on paper. Links look <a href="#main">like this</a>, and
+        gaps still waiting on a number look like <span class="todo">[X days]</span>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--mist">
+    <div class="container flow">
+      <h2>How I work</h2>
+      <h3>Turning ambiguity into programs</h3>
+      <p>
+        I take organizational problems that don't have a shape yet and turn them into
+        structured, measurable initiatives. I start with the data, build the case, and design
+        toward outcomes I can track.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--teal">
+    <div class="container flow">
+      <h2>Results</h2>
+      <p class="big-number">65%</p>
+      <p>of employees had an active growth plan after launch, up from 9%.</p>
+    </div>
+  </section>
+
+  <section class="section section--blue">
+    <div class="container flow">
+      <h2>Reflection</h2>
+      <p>
+        The biggest challenge was getting a busy organization to stop and engage with it.
+        On blue, big numbers and headings stay white, since mustard doesn't have enough
+        contrast here.
+      </p>
+      <p class="big-number">68%</p>
+    </div>
+  </section>
+</Base>

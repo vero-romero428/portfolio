@@ -1,0 +1,43 @@
+---
+import { url } from '../utils/url';
+---
+
+<footer class="site-footer section--teal">
+  <div class="container site-footer__inner">
+    <ul class="site-footer__links" role="list">
+      <li><span class="todo">[Email]</span></li>
+      <li><span class="todo">[LinkedIn]</span></li>
+      <li><a href={url('resume.pdf')}>Resume</a></li>
+    </ul>
+    <p class="site-footer__credit">
+      Built with Astro and Claude Code.{' '}
+      <a href="https://github.com/vero-romero428/portfolio">See the code on GitHub</a>.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-block: var(--space-7);
+    --link-color: var(--white);
+  }
+
+  .site-footer__inner {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .site-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-6);
+    padding: 0;
+    list-style: none;
+    font-weight: var(--weight-medium);
+  }
+
+  .site-footer__credit {
+    font-size: var(--text-sm);
+    color: var(--mist);
+  }
+</style>

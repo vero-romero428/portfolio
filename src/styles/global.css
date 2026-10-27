@@ -1,0 +1,191 @@
+@import "./tokens.css";
+
+/* A light reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-tight);
+  color: var(--heading-color, inherit);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--text-3xl);
+}
+
+h2 {
+  font-size: var(--text-2xl);
+}
+
+h3 {
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+}
+
+p,
+li {
+  max-width: var(--measure);
+}
+
+/* Links */
+a {
+  color: var(--link-color, currentColor);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Visible keyboard focus, coloured to suit each section background */
+:focus-visible {
+  outline: var(--focus-width) solid var(--focus-color, var(--blue));
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Skip link: hidden until someone tabs to it */
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: -100px;
+  padding: var(--space-2) var(--space-4);
+  background: var(--ink);
+  color: var(--white);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: var(--space-2);
+}
+
+/* Page width container */
+.container {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/*
+  Section backgrounds. Each one sets its own text, heading, link and focus
+  colours so every pairing stays within the contrast notes in tokens.css.
+*/
+.section {
+  padding-block: var(--section-pad);
+}
+
+.section--paper {
+  background: var(--paper);
+  color: var(--ink);
+  --heading-color: var(--blue);
+  --label-color: var(--coral-text);
+  --focus-color: var(--blue);
+}
+
+.section--mist {
+  background: var(--mist);
+  color: var(--ink);
+  --heading-color: var(--teal);
+  --label-color: var(--coral-text);
+  --focus-color: var(--teal);
+}
+
+.section--teal {
+  background: var(--teal);
+  color: var(--white);
+  --heading-color: var(--white);
+  --number-color: var(--mustard);
+  --label-color: var(--mist);
+  --focus-color: var(--mustard);
+}
+
+.section--blue {
+  background: var(--blue);
+  color: var(--white);
+  --heading-color: var(--white);
+  /* Mustard fails on blue, so big numbers stay white here */
+  --number-color: var(--white);
+  --label-color: var(--mist);
+  --focus-color: var(--white);
+}
+
+/* Small label above a heading, such as a phase name */
+.label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.04em;
+  color: var(--label-color, var(--coral-text));
+}
+
+/* Big result number, the visual punctuation of a case study */
+.big-number {
+  font-family: var(--font-serif);
+  font-weight: var(--weight-light);
+  font-size: var(--text-number);
+  line-height: 1;
+  color: var(--number-color, var(--teal));
+}
+
+.lede {
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+}
+
+/* Text stacks: consistent spacing between paragraphs and headings */
+.flow > * + * {
+  margin-top: var(--flow-space, var(--space-4));
+}
+
+/* Unfilled content gaps, visible during development */
+.todo {
+  background: var(--mustard);
+  color: var(--ink);
+  padding-inline: 0.25em;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

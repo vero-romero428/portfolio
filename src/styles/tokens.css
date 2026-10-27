@@ -1,0 +1,75 @@
+/*
+  Design tokens. Every colour, font, size and spacing value lives here,
+  so the look of the whole site can be adjusted from one file.
+*/
+
+:root {
+  /* Colour: sampled from the palette page in Figma */
+  --teal: #1b6b6b;
+  --blue: #016ad8;
+  --paper: #f8f6f2;
+  --mist: #e0f2f6;
+  --sage: #99c1bb;
+  --mustard: #eab12d;
+  --coral: #d86b57;
+  --ink: #1a1a1a;
+  --white: #ffffff;
+
+  /* Mostly for illustrations. Use sparingly, if at all. */
+  --mint: #90e6a2;
+  --lilac: #d296d3;
+
+  /*
+    Contrast notes (WCAG AA, checked against each background):
+    - Mustard on teal is 3.22:1. Large numbers and headings only.
+    - Mustard on blue is 2.67:1. Fails even at large sizes, so never pair them.
+    - Coral on paper is 3.16:1. Large text only. Use --coral-text for small labels.
+    - Blue on mist is 4.49:1. Large headings only. Use ink or teal for body text.
+  */
+  --coral-text: #a85344; /* 4.88:1 on paper, 4.57:1 on mist */
+
+  /* Typography. Swap the headline font here once it's confirmed from Figma. */
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+
+  /* Type scale. clamp() grows sizes smoothly from a 360px phone to desktop. */
+  --text-sm: 0.875rem;
+  --text-base: 1.0625rem;
+  --text-lg: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  --text-xl: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --text-2xl: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
+  --text-3xl: clamp(2.5rem, 1.6rem + 4vw, 4.75rem);
+  --text-number: clamp(3.5rem, 2.4rem + 5vw, 6.5rem);
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.3;
+  --leading-body: 1.6;
+
+  /* Keeps body text under about 75 characters per line */
+  --measure: 65ch;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --section-pad: clamp(var(--space-7), 6vw, var(--space-9));
+
+  /* Layout */
+  --page-max: 72rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+
+  /* Shape */
+  --radius: 0.5rem;
+  --focus-width: 3px;
+}
