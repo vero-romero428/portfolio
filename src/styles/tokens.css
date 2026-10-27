@@ -28,9 +28,9 @@
   */
   --coral-text: #a85344; /* 4.88:1 on paper, 4.57:1 on mist */
 
-  /* Typography. Swap the headline font here once it's confirmed from Figma. */
-  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
-  --font-sans: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Typography, matching the Figma deck */
+  --font-serif: "Crimson Pro", Georgia, "Times New Roman", serif;
+  --font-sans: "Rethink Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --weight-light: 300;
   --weight-regular: 400;
