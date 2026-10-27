@@ -1,11 +1,26 @@
 ---
 import { url } from '../utils/url';
+import { LINKEDIN_URL } from '../utils/contact';
+import LinkedInIcon from './LinkedInIcon.astro';
+
+const isHome = Astro.url.pathname === url();
 ---
 
 <header class="site-header">
   <div class="container site-header__inner">
     <a class="site-header__name" href={url()}>Veronica Romero</a>
-    <a class="site-header__link" href={url('resume.pdf')}>Resume</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul role="list">
+        <li><a href={url()} aria-current={isHome ? 'page' : undefined}>Home</a></li>
+        <li><a href={url('#work')}>Work</a></li>
+        <li><a href={url('#contact')}>Contact me</a></li>
+        <li>
+          <a class="site-nav__icon" href={LINKEDIN_URL} aria-label="LinkedIn">
+            <LinkedInIcon />
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </header>
 
@@ -17,10 +32,12 @@ import { url } from '../utils/url';
 
   .site-header__inner {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-4);
+    gap: var(--space-1) var(--space-5);
     min-height: 4rem;
+    padding-block: var(--space-2);
   }
 
   .site-header__name {
@@ -30,10 +47,44 @@ import { url } from '../utils/url';
     text-decoration: none;
   }
 
-  .site-header__link {
+  .site-nav ul {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1) var(--space-4);
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-nav a {
+    display: inline-flex;
+    align-items: center;
+    /* Comfortable tap target on phones */
+    min-height: 2.75rem;
+    padding-inline: var(--space-1);
     font-weight: var(--weight-medium);
     color: var(--ink);
-    /* Comfortable tap target on phones */
-    padding: var(--space-2) var(--space-1);
+    text-decoration: none;
+  }
+
+  .site-nav a:hover,
+  .site-nav a[aria-current='page'] {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35em;
+  }
+
+  .site-nav__icon {
+    color: var(--teal) !important;
+  }
+
+  /* On small phones the nav takes its own row under the name */
+  @media (max-width: 30rem) {
+    .site-nav {
+      width: 100%;
+    }
+
+    .site-nav ul {
+      justify-content: space-between;
+    }
   }
 </style>

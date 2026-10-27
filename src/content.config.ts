@@ -12,6 +12,8 @@ const work = defineCollection({
     org: z.string(),
     context: z.string(),
     order: z.number(),
+    // Set to false to keep a case study live but off the homepage
+    onHomepage: z.boolean().default(true),
   }),
 });
 

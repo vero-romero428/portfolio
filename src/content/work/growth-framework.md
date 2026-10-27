@@ -4,6 +4,7 @@ summary: "Redesigning a growth framework that had become too heavy to use. Activ
 org: "Metalab"
 context: "140 employees, with a deeper focus on the 52-person design team"
 order: 1
+onHomepage: false
 ---
 
 ## The starting point

@@ -1,10 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import Timeline from '../components/Timeline.astro';
 import Pillars from '../components/Pillars.astro';
 import WorkCard from '../components/WorkCard.astro';
-import { url } from '../utils/url';
+import ContactLinks from '../components/ContactLinks.astro';
 
 // Placeholder illustrations. Replaced with the real paintings in milestone 5.
 import Leaf from '../assets/illustrations/leaf.svg';
@@ -13,30 +12,43 @@ import Burst from '../assets/illustrations/burst.svg';
 import Squiggle from '../assets/illustrations/squiggle.svg';
 import Dots from '../assets/illustrations/dots.svg';
 
-const roles = [
+// Draft copy. To be revised in a full copy pass.
+const problems = [
   {
-    org: 'Lightspeed Commerce',
-    dates: '2026',
-    description:
-      'Senior Design Operations for a 140-person design team across three verticals, focused on helping designers and researchers adopt AI well.',
+    title: 'Building operations from the ground up.',
+    body: "Setting up an ops practice where there wasn't one, starting with listening, then a backlog leadership can see and steer.",
   },
   {
-    org: 'Metalab',
-    dates: '2023 to 2026',
-    description:
-      'Built the DesignOps practice from scratch and expanded into department operations across the org.',
+    title: 'Growth and career frameworks.',
+    body: 'Making competencies clear enough that people use them between review cycles, and managers can have honest conversations about progression.',
   },
   {
-    org: 'Deloitte Digital',
-    dates: '2021 to 2023',
-    description:
-      'Group Experience Design Manager, navigating a large, complex organization after acquisition.',
+    title: 'Performance and feedback systems.',
+    body: 'Connecting the people who hold different pieces of the picture, so decisions about performance happen in weeks instead of months.',
   },
   {
-    org: 'TWG',
-    dates: '2014 to 2021',
-    description:
-      'Grew from product designer into design leadership, eventually managing a 30-person team.',
+    title: 'Quality standards teams actually use.',
+    body: 'Turning a shared definition of good work into checkpoints that fit the way projects already run.',
+  },
+  {
+    title: 'AI adoption and learning programs.',
+    body: 'Helping people at very different starting points find practical, everyday uses for AI, across time zones and busy schedules.',
+  },
+  {
+    title: 'Team connection on distributed teams.',
+    body: 'Rebuilding the rituals that make a remote team feel like a team, especially after a hard stretch like layoffs.',
+  },
+  {
+    title: 'Leadership operating rhythm.',
+    body: 'Restructuring leadership meetings so team feedback and priorities turn into decisions, not another round of discussion.',
+  },
+  {
+    title: 'Cross-functional handoffs.',
+    body: 'Improving the rituals between design, engineering, and product so work moves between disciplines with less friction.',
+  },
+  {
+    title: 'Making the case for change.',
+    body: 'Pulling together the data, the stories, and the investment case leaders need to commit to fixing something.',
   },
 ];
 
@@ -58,7 +70,9 @@ const pillars = [
   },
 ];
 
-const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+const work = (await getCollection('work'))
+  .filter((entry) => entry.data.onHomepage)
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <Base
@@ -79,10 +93,39 @@ const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.
     </div>
   </section>
 
-  <section class="section section--paper" aria-labelledby="timeline-heading">
-    <div class="container flow" style="--flow-space: var(--space-6)">
-      <h2 id="timeline-heading">Where I've worked</h2>
-      <Timeline roles={roles} />
+  <section class="section section--paper" aria-labelledby="about-heading">
+    <div class="container flow about" style="--flow-space: var(--space-5)">
+      <h2 id="about-heading">Hi, I'm Veronica</h2>
+      <p class="lede">
+        I've spent more than 10 years working in design, first as a product designer and then
+        leading teams at TWG, Deloitte Digital, Metalab, and now Lightspeed Commerce.
+      </p>
+      <p>
+        Somewhere along the way I realized the part I loved most wasn't the screens. It was
+        the conditions around the work: how people grow, how decisions get made, how a team
+        stays connected when everyone's in a different time zone. That's where I've focused
+        ever since.
+      </p>
+      <p>
+        I bring a designer's habit of listening first and an operator's habit of measuring
+        what matters. I'm happiest taking a messy, people-shaped problem, finding where the
+        friction really lives, and building something the team actually wants to use.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--mist" aria-labelledby="problems-heading">
+    <div class="container flow" style="--flow-space: var(--space-7)">
+      <h2 id="problems-heading">Problems I help organizations solve</h2>
+      <ul class="problems" role="list">
+        {
+          problems.map((problem) => (
+            <li>
+              <strong>{problem.title}</strong> {problem.body}
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 
@@ -94,7 +137,7 @@ const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.
     </div>
   </section>
 
-  <section class="section section--mist" aria-labelledby="work-heading">
+  <section id="work" class="section section--paper" aria-labelledby="work-heading">
     <div class="container flow" style="--flow-space: var(--space-6)">
       <h2 id="work-heading">Selected work</h2>
       <div class="work-grid">
@@ -112,14 +155,14 @@ const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.
     </div>
   </section>
 
-  <section class="section section--paper" aria-labelledby="contact-heading">
+  <section id="contact" class="section section--mist" aria-labelledby="contact-heading">
     <div class="container flow" style="--flow-space: var(--space-5)">
-      <h2 id="contact-heading">Get in touch</h2>
-      <ul class="contact-links" role="list">
-        <li><span class="todo">[Email]</span></li>
-        <li><span class="todo">[LinkedIn]</span></li>
-        <li><a href={url('resume.pdf')}>Download my resume</a></li>
-      </ul>
+      <h2 id="contact-heading">Let's talk</h2>
+      <p class="lede">
+        If you'd like to work together, or you're wrestling with something on your team and
+        want a second brain on it, I'd love to chat. Email is the best way to reach me.
+      </p>
+      <ContactLinks />
     </div>
   </section>
 </Base>
@@ -219,10 +262,40 @@ const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.
     }
   }
 
-  /* Selected work */
+  /* Key problems: a bold run-in title, then a short description */
+  .problems {
+    display: grid;
+    gap: var(--space-5) var(--space-7);
+    padding: 0;
+    list-style: none;
+  }
+
+  .problems li {
+    max-width: 38ch;
+  }
+
+  .problems strong {
+    font-weight: var(--weight-bold);
+    color: var(--teal);
+  }
+
+  @media (min-width: 40rem) {
+    .problems {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .problems {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Selected work: cards sit on paper here, so they take the mist tone */
   .work-grid {
     display: grid;
     gap: var(--space-5);
+    --card-bg: var(--mist);
   }
 
   @media (min-width: 48rem) {
@@ -231,12 +304,9 @@ const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.
     }
   }
 
-  /* Contact */
-  .contact-links {
-    display: grid;
-    gap: var(--space-3);
-    padding: 0;
-    list-style: none;
-    font-size: var(--text-lg);
+  /* Anchored sections clear the top of the window when jumped to */
+  #work,
+  #contact {
+    scroll-margin-top: var(--space-4);
   }
 </style>

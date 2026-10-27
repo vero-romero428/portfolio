@@ -23,7 +23,7 @@ const { slug, title, summary, org } = Astro.props;
   .work-card {
     position: relative;
     padding: var(--space-6);
-    background: var(--paper);
+    background: var(--card-bg, var(--paper));
     border-radius: var(--radius);
     transition: transform 150ms ease;
   }
