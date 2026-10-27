@@ -1,0 +1,62 @@
+---
+interface Role {
+  org: string;
+  dates: string;
+  description: string;
+}
+
+interface Props {
+  roles: Role[];
+}
+
+const { roles } = Astro.props;
+---
+
+<ol class="timeline" role="list">
+  {
+    roles.map((role) => (
+      <li class="timeline__item">
+        <p class="timeline__dates">{role.dates}</p>
+        <div class="flow" style="--flow-space: var(--space-2)">
+          <h3 class="timeline__org">{role.org}</h3>
+          <p>{role.description}</p>
+        </div>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .timeline {
+    display: grid;
+    gap: var(--space-6);
+    padding: 0;
+    list-style: none;
+  }
+
+  .timeline__item {
+    display: grid;
+    gap: var(--space-2);
+    padding-top: var(--space-5);
+    border-top: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
+    max-width: none;
+  }
+
+  .timeline__dates {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--coral-text);
+  }
+
+  /* On wider screens, dates sit in a column to the left */
+  @media (min-width: 48rem) {
+    .timeline__item {
+      grid-template-columns: 10rem 1fr;
+      gap: var(--space-6);
+    }
+
+    .timeline__dates {
+      padding-top: 0.4em;
+    }
+  }
+</style>

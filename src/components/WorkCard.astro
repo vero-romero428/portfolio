@@ -1,0 +1,65 @@
+---
+import { url } from '../utils/url';
+
+interface Props {
+  slug: string;
+  title: string;
+  summary: string;
+  org: string;
+}
+
+const { slug, title, summary, org } = Astro.props;
+---
+
+<article class="work-card flow" style="--flow-space: var(--space-3)">
+  <p class="label">{org}</p>
+  <h3 class="work-card__title">
+    <a href={url(`work/${slug}`)}>{title}</a>
+  </h3>
+  <p>{summary}</p>
+</article>
+
+<style>
+  .work-card {
+    position: relative;
+    padding: var(--space-6);
+    background: var(--paper);
+    border-radius: var(--radius);
+    transition: transform 150ms ease;
+  }
+
+  .work-card__title {
+    color: var(--blue);
+  }
+
+  .work-card__title a {
+    text-decoration: none;
+  }
+
+  /* The whole card is clickable, but only the title is announced as the link */
+  .work-card__title a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+  }
+
+  .work-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .work-card:hover .work-card__title a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  /* Move the focus ring from the title to the whole card */
+  .work-card__title a:focus-visible {
+    outline: none;
+  }
+
+  .work-card__title a:focus-visible::after {
+    outline: var(--focus-width) solid var(--teal);
+    outline-offset: 3px;
+  }
+</style>

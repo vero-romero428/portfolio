@@ -1,0 +1,44 @@
+---
+interface Pillar {
+  title: string;
+  body: string;
+  icon: (props: Record<string, unknown>) => unknown;
+}
+
+interface Props {
+  pillars: Pillar[];
+}
+
+const { pillars } = Astro.props;
+---
+
+<div class="pillars">
+  {
+    pillars.map(({ title, body, icon: Icon }) => (
+      <div class="pillar flow" style="--flow-space: var(--space-3)">
+        <Icon class="pillar__icon" aria-hidden="true" />
+        <h3>{title}</h3>
+        <p>{body}</p>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .pillars {
+    display: grid;
+    gap: var(--space-7);
+  }
+
+  @media (min-width: 56rem) {
+    .pillars {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+  }
+
+  .pillar :global(.pillar__icon) {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+</style>

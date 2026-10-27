@@ -1,14 +1,25 @@
 ---
 import { url } from '../utils/url';
+
+interface Props {
+  // The homepage has its own contact section, so it hides these links
+  showContact?: boolean;
+}
+
+const { showContact = true } = Astro.props;
 ---
 
 <footer class="site-footer section--teal">
   <div class="container site-footer__inner">
-    <ul class="site-footer__links" role="list">
-      <li><span class="todo">[Email]</span></li>
-      <li><span class="todo">[LinkedIn]</span></li>
-      <li><a href={url('resume.pdf')}>Resume</a></li>
-    </ul>
+    {
+      showContact && (
+        <ul class="site-footer__links" role="list">
+          <li><span class="todo">[Email]</span></li>
+          <li><span class="todo">[LinkedIn]</span></li>
+          <li><a href={url('resume.pdf')}>Resume</a></li>
+        </ul>
+      )
+    }
     <p class="site-footer__credit">
       Built with Astro and Claude Code.{' '}
       <a href="https://github.com/vero-romero428/portfolio">See the code on GitHub</a>.
