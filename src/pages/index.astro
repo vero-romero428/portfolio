@@ -84,9 +84,11 @@ const work = (await getCollection('work'))
     <Leaf class="hero__art hero__art--leaf" aria-hidden="true" />
     <Petal class="hero__art hero__art--petal" aria-hidden="true" />
     <Dots class="hero__art hero__art--dots" aria-hidden="true" />
-    <div class="container flow hero__inner" style="--flow-space: var(--space-5)">
-      <h1 id="hero-name">Veronica Romero</h1>
-      <p class="hero__role">Design operations and people experience leader</p>
+    <div class="container flow hero__inner" style="--flow-space: var(--space-6)">
+      <hgroup class="hero__title">
+        <h1 id="hero-name">Veronica Romero</h1>
+        <p class="hero__role">Design operations and people experience leader</p>
+      </hgroup>
       <p class="hero__statement">
         Building the systems and conditions where teams can do their best work.
       </p>
@@ -180,8 +182,19 @@ const work = (await getCollection('work'))
     z-index: 1;
   }
 
+  /* Name very big, with the subtitle tucked in close underneath */
+  .hero__title {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .hero__title h1 {
+    font-size: clamp(3rem, 1.5rem + 6.5vw, 6.25rem);
+    line-height: 1;
+  }
+
   .hero__role {
-    font-size: var(--text-lg);
+    font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
     font-weight: var(--weight-medium);
     color: var(--mist);
   }
