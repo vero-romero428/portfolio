@@ -1,0 +1,322 @@
+---
+import Base from '../layouts/Base.astro';
+import Pillars from '../components/Pillars.astro';
+
+// Placeholder illustrations. Replaced with the real paintings in milestone 5.
+import Leaf from '../assets/illustrations/leaf.svg';
+import Petal from '../assets/illustrations/petal.svg';
+import Burst from '../assets/illustrations/burst.svg';
+import Squiggle from '../assets/illustrations/squiggle.svg';
+import Dots from '../assets/illustrations/dots.svg';
+
+// Earlier roles, from the career timeline in the brief
+const roles = [
+  {
+    org: 'Metalab',
+    dates: '2023 to 2026',
+    description:
+      'Built the DesignOps practice from scratch and expanded into department operations across the org.',
+  },
+  {
+    org: 'Deloitte Digital',
+    dates: '2021 to 2023',
+    description:
+      'Group Experience Design Manager, navigating a large, complex organization after acquisition.',
+  },
+  {
+    org: 'TWG',
+    dates: '2014 to 2021',
+    description:
+      'Grew from product designer into design leadership, eventually managing a 30-person team.',
+  },
+];
+
+// From my previous site, lightly edited. To be revised in the copy pass.
+const principles = [
+  {
+    title: 'Lead with compassion and vulnerability',
+    body: "I've had a long journey of learning how to be heart forward in my work and embrace my mistakes. What I've learned is that when you prioritize human relationships and transparency, authentic trust begins to build.",
+    icon: Petal,
+  },
+  {
+    title: "We're in this together",
+    body: "[My most important team is the design teams I directly manage], but my cross-department peers are equally important. I work towards building strong alliances across the organizations I work within, to make sure we're all heading towards the same goal.",
+    icon: Leaf,
+  },
+  {
+    title: 'Experiment and iterate',
+    body: "I see feedback as a gift that makes my work better. That includes my design work, of course, but more importantly how I build teams, culture, and rituals. I'm always looking for feedback and have a constant drive to improve, even if it means pivoting on something I've just shipped.",
+    icon: Burst,
+  },
+];
+---
+
+<Base
+  title="About Veronica Romero"
+  description="Design operations and people experience leader. A bit about how I lead, where I've worked, and what I do away from my desk."
+>
+  <section class="section section--teal about-hero" aria-labelledby="about-title">
+    <Leaf class="about-hero__art about-hero__art--leaf" aria-hidden="true" />
+    <Dots class="about-hero__art about-hero__art--dots" aria-hidden="true" />
+    <div class="container flow" style="--flow-space: var(--space-5)">
+      <h1 id="about-title">About me</h1>
+      <p class="about-hero__intro">
+        <span class="todo">[A short intro in your own words: who you are and what you focus on]</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--paper" aria-labelledby="now-heading">
+    <div class="container about-now">
+      <div class="photo-placeholder" role="img" aria-label="Photo placeholder">
+        <span>Photo placeholder</span>
+      </div>
+      <div class="flow" style="--flow-space: var(--space-5)">
+        <h2 id="now-heading">Currently Senior Design Operations at Lightspeed Commerce</h2>
+        <p>
+          Senior Design Operations for a 140-person design team across three verticals, focused
+          on helping designers and researchers adopt AI well.
+        </p>
+
+        <h3 class="about-now__subhead">Before that</h3>
+        <ul class="roles" role="list">
+          {
+            roles.map((role) => (
+              <li>
+                <p class="label">
+                  {role.org}, {role.dates}
+                </p>
+                <p>{role.description}</p>
+              </li>
+            ))
+          }
+        </ul>
+
+        <h3 class="about-now__subhead">A few highlights</h3>
+        <ul class="highlights">
+          <li>Spearheaded the implementation of design operations within the organization</li>
+          <li>Implemented improved career laddering frameworks for progression within the team</li>
+          <li>3-time company Halloween costume winner</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--blue break" aria-labelledby="principles-heading">
+    <Squiggle class="break__art" aria-hidden="true" />
+    <div class="container flow" style="--flow-space: var(--space-7)">
+      <h2 id="principles-heading">My leadership principles</h2>
+      <Pillars pillars={principles} />
+    </div>
+  </section>
+
+  <section class="section section--mist" aria-labelledby="desk-heading">
+    <div class="container about-desk">
+      <div class="flow" style="--flow-space: var(--space-5)">
+        <h2 id="desk-heading">When I'm not at my desk, you can find me…</h2>
+        <ul class="desk-list">
+          <li>Reluctantly running with the family, or willingly going on a hike together</li>
+          <li>
+            Trying to squeeze in moments of creativity, whether it's lino block printing,
+            weaving, or trying out a new recipe
+          </li>
+          <li>Living for a really good nap</li>
+          <li>
+            <span class="todo"
+              >[Something about painting the illustrations you see on this site?]</span
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="about-desk__art" aria-hidden="true">
+        <Petal class="about-desk__petal" />
+        <Leaf class="about-desk__leaf" />
+        <Dots class="about-desk__dots" />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Hero */
+  .about-hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(var(--space-8), 10vw, 8rem);
+  }
+
+  .about-hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-hero__intro {
+    font-family: var(--font-serif);
+    font-weight: var(--weight-light);
+    font-size: var(--text-xl);
+    line-height: var(--leading-snug);
+    max-width: 34ch;
+  }
+
+  .about-hero :global(.about-hero__art) {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .about-hero :global(.about-hero__art--leaf) {
+    width: clamp(4rem, 10vw, 8rem);
+    top: -1.5rem;
+    right: 8%;
+    transform: rotate(-18deg);
+  }
+
+  .about-hero :global(.about-hero__art--dots) {
+    width: clamp(5rem, 10vw, 8rem);
+    bottom: 1.5rem;
+    right: 4%;
+  }
+
+  @media (max-width: 40rem) {
+    .about-hero :global(.about-hero__art--dots) {
+      display: none;
+    }
+
+    .about-hero :global(.about-hero__art--leaf) {
+      width: 3.5rem;
+      top: -1rem;
+      right: 1rem;
+    }
+  }
+
+  /* Photo and current role */
+  .about-now {
+    display: grid;
+    gap: var(--space-7);
+    align-items: start;
+  }
+
+  @media (min-width: 56rem) {
+    .about-now {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: var(--space-8);
+    }
+  }
+
+  .photo-placeholder {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 5;
+    max-width: 28rem;
+    border: 2px dashed color-mix(in srgb, var(--ink) 30%, transparent);
+    border-radius: var(--radius);
+    background: var(--mist);
+    font-size: var(--text-sm);
+    color: var(--ink);
+  }
+
+  .about-now h2 {
+    font-size: var(--text-xl);
+    line-height: var(--leading-snug);
+  }
+
+  .about-now__subhead {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+    --flow-space: var(--space-6);
+  }
+
+  .roles {
+    display: grid;
+    gap: var(--space-4);
+    padding: 0;
+    list-style: none;
+  }
+
+  .highlights,
+  .desk-list {
+    display: grid;
+    gap: var(--space-2);
+    padding-left: 1.25em;
+  }
+
+  .highlights li::marker,
+  .desk-list li::marker {
+    color: var(--coral-text);
+  }
+
+  /* Section break illustration */
+  .break {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .break :global(.break__art) {
+    position: absolute;
+    top: var(--space-6);
+    right: -2rem;
+    width: clamp(8rem, 18vw, 14rem);
+    transform: rotate(-8deg);
+    pointer-events: none;
+  }
+
+  @media (max-width: 40rem) {
+    .break :global(.break__art) {
+      top: var(--space-4);
+      width: 6rem;
+      opacity: 0.8;
+    }
+  }
+
+  /* Away from my desk */
+  .about-desk {
+    display: grid;
+    gap: var(--space-7);
+    align-items: center;
+  }
+
+  @media (min-width: 56rem) {
+    .about-desk {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    }
+  }
+
+  .about-desk__art {
+    position: relative;
+    min-height: 16rem;
+  }
+
+  .about-desk__art :global(svg) {
+    position: absolute;
+  }
+
+  .about-desk__art :global(.about-desk__petal) {
+    width: 10rem;
+    top: 10%;
+    left: 20%;
+    transform: rotate(-10deg);
+  }
+
+  .about-desk__art :global(.about-desk__leaf) {
+    width: 6rem;
+    top: 0;
+    right: 15%;
+    transform: rotate(20deg);
+  }
+
+  .about-desk__art :global(.about-desk__dots) {
+    width: 7rem;
+    bottom: 0;
+    right: 30%;
+  }
+
+  @media (max-width: 56rem) {
+    .about-desk__art {
+      min-height: 10rem;
+    }
+
+    .about-desk__art :global(.about-desk__petal) {
+      width: 7rem;
+    }
+  }
+</style>

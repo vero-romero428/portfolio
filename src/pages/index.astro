@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import Pillars from '../components/Pillars.astro';
 import WorkCard from '../components/WorkCard.astro';
 import ContactLinks from '../components/ContactLinks.astro';
+import { url } from '../utils/url';
 
 // Placeholder illustrations. Replaced with the real paintings in milestone 5.
 import Leaf from '../assets/illustrations/leaf.svg';
@@ -93,6 +94,7 @@ const work = (await getCollection('work'))
         I help organizations build the systems and processes that let their people do their
         best work.
       </p>
+      <p class="hero__more"><a href={url('about/')}>More about me <span aria-hidden="true">→</span></a></p>
     </div>
   </section>
 
@@ -177,6 +179,11 @@ const work = (await getCollection('work'))
     font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
     font-weight: var(--weight-medium);
     color: var(--mist);
+  }
+
+  .hero__more {
+    font-weight: var(--weight-medium);
+    --link-color: var(--white);
   }
 
   .hero__statement {

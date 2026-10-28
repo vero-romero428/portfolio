@@ -4,6 +4,7 @@ import { LINKEDIN_URL } from '../utils/contact';
 import LinkedInIcon from './LinkedInIcon.astro';
 
 const isHome = Astro.url.pathname === url();
+const isAbout = Astro.url.pathname.startsWith(url('about'));
 ---
 
 <header class="site-header">
@@ -12,6 +13,7 @@ const isHome = Astro.url.pathname === url();
     <nav class="site-nav" aria-label="Main">
       <ul role="list">
         <li><a href={url()} aria-current={isHome ? 'page' : undefined}>Home</a></li>
+        <li><a href={url('about/')} aria-current={isAbout ? 'page' : undefined}>About</a></li>
         <li><a href={url('#work')}>Work</a></li>
         <li><a href={url('#contact')}>Contact me</a></li>
         <li>
@@ -61,6 +63,7 @@ const isHome = Astro.url.pathname === url();
     /* Comfortable tap target on phones */
     min-height: 2.75rem;
     padding-inline: var(--space-1);
+    white-space: nowrap;
     font-size: 1rem;
     font-weight: var(--weight-regular);
     color: var(--ink);
@@ -86,6 +89,7 @@ const isHome = Astro.url.pathname === url();
 
     .site-nav ul {
       justify-content: space-between;
+      gap: var(--space-1) var(--space-2);
     }
   }
 </style>
