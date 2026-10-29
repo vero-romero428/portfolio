@@ -50,7 +50,7 @@ const howIWork = [
   },
   {
     title: 'Designing for adoption',
-    body: 'A framework only matters if people use it. I pilot with real teams, gather feedback early, and keep refining until the program becomes part of how the team works.',
+    body: 'I roll new programs out with a pilot team first, gather feedback early, and keep refining after launch. The goal is for it to become part of how the team works day to day, not something people only open when they have to.',
     icon: Leaf,
   },
 ];
@@ -60,48 +60,48 @@ const howIWork = [
   title="About Veronica Romero"
   description="Design operations and program leader. How I work, where I've worked, and what I do away from my desk."
 >
-  <section class="section section--teal about-hero" aria-labelledby="about-title">
+  <section class="section section--blue about-hero" aria-labelledby="about-title">
     <Leaf class="about-hero__art about-hero__art--leaf" aria-hidden="true" />
-    <Dots class="about-hero__art about-hero__art--dots" aria-hidden="true" />
-    <div class="container flow" style="--flow-space: var(--space-6)">
-      <hgroup class="about-hero__title">
-        <h1 id="about-title">I'm Veronica</h1>
-        <p class="about-hero__byline">
-          Design operations and program leader, specializing in team growth, operational
-          systems, and AI adoption.
+    <div class="container about-hero__grid">
+      <div class="flow" style="--flow-space: var(--space-6)">
+        <hgroup class="about-hero__title">
+          <h1 id="about-title">I'm Veronica</h1>
+          <p class="about-hero__byline">
+            Design operations and program leader, specializing in people programs, operational
+            strategy, and AI fluency.
+          </p>
+        </hgroup>
+        <p class="about-hero__intro">
+          I focus on the parts of an organization that shape how people experience their work:
+          how they grow, how decisions get made, and how new tools actually take hold. Most of
+          that work happens alongside design, product, and engineering leaders, and the teams
+          they lead.
         </p>
-      </hgroup>
-      <p class="about-hero__intro">
-        I focus on the parts of an organization that shape how people experience their work:
-        how they grow, how decisions get made, and how new tools actually take hold. I'm at my
-        best when something is messy and undefined, and the job is to give it shape.
-      </p>
+      </div>
+      <div class="photo-placeholder" role="img" aria-label="Photo placeholder">
+        <span>Photo placeholder</span>
+      </div>
     </div>
   </section>
 
   <section class="section section--paper" aria-labelledby="experience-heading">
-    <div class="container about-experience">
-      <div class="photo-placeholder" role="img" aria-label="Photo placeholder">
-        <span>Photo placeholder</span>
-      </div>
-      <div class="flow" style="--flow-space: var(--space-5)">
-        <h2 id="experience-heading">Experience</h2>
-        <ul class="roles" role="list">
-          {
-            roles.map((role) => (
-              <li class="flow" style="--flow-space: var(--space-1)">
-                <h3>{role.org}</h3>
-                <p class="label">{role.dates}</p>
-                <p>{role.description}</p>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+    <div class="container flow" style="--flow-space: var(--space-6)">
+      <h2 id="experience-heading">Experience</h2>
+      <ul class="roles" role="list">
+        {
+          roles.map((role) => (
+            <li class="flow" style="--flow-space: var(--space-1)">
+              <h3>{role.org}</h3>
+              <p class="label">{role.dates}</p>
+              <p>{role.description}</p>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 
-  <section class="section section--blue break" aria-labelledby="how-heading">
+  <section class="section section--teal break" aria-labelledby="how-heading">
     <Squiggle class="break__art" aria-hidden="true" />
     <div class="container flow" style="--flow-space: var(--space-7)">
       <h2 id="how-heading">How I work</h2>
@@ -114,13 +114,13 @@ const howIWork = [
       <div class="flow" style="--flow-space: var(--space-5)">
         <h2 id="desk-heading">When I'm not at my desk, you can find me…</h2>
         <ul class="desk-list">
-          <li>Reluctantly running with the family, or willingly going on a hike together</li>
+          <li>Squeezing in moments of creativity, whether it's lino block printing or weaving</li>
           <li>
-            Trying to squeeze in moments of creativity, whether it's lino block printing,
-            weaving, or trying out a new recipe
+            In the kitchen, either making a huge mess baking something with chocolate chips, or
+            making as little mess as possible with a one-pot dinner (I love a one-pot recipe)
           </li>
           <li>Living for a really good nap</li>
-          <li>Defending my title as a 3-time company Halloween costume winner</li>
+          <li>Reluctantly running with the family, or willingly going on a hike together</li>
           <li>
             <span class="todo"
               >[Something about painting the illustrations you see on this site?]</span
@@ -155,12 +155,33 @@ const howIWork = [
     gap: var(--space-3);
   }
 
+  /* White, not mist: mist on blue is 4.49:1, just under the AA minimum */
   .about-hero__byline {
     font-size: var(--text-lg);
     font-weight: var(--weight-medium);
     line-height: var(--leading-snug);
-    color: var(--mist);
+    color: var(--white);
     max-width: 40ch;
+  }
+
+  /* Text beside the photo on wide screens, photo below the text on phones */
+  .about-hero__grid {
+    display: grid;
+    gap: var(--space-7);
+    align-items: center;
+  }
+
+  @media (min-width: 56rem) {
+    .about-hero__grid {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      gap: var(--space-8);
+    }
+  }
+
+  .about-hero .photo-placeholder {
+    border-color: color-mix(in srgb, var(--white) 50%, transparent);
+    background: color-mix(in srgb, var(--white) 12%, transparent);
+    color: var(--white);
   }
 
   .about-hero__intro {
@@ -201,20 +222,6 @@ const howIWork = [
     }
   }
 
-  /* Photo and experience */
-  .about-experience {
-    display: grid;
-    gap: var(--space-7);
-    align-items: start;
-  }
-
-  @media (min-width: 56rem) {
-    .about-experience {
-      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-      gap: var(--space-8);
-    }
-  }
-
   .photo-placeholder {
     display: grid;
     place-items: center;
@@ -229,9 +236,15 @@ const howIWork = [
 
   .roles {
     display: grid;
-    gap: var(--space-6);
+    gap: var(--space-6) var(--space-7);
     padding: 0;
     list-style: none;
+  }
+
+  @media (min-width: 48rem) {
+    .roles {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   .roles h3 {
