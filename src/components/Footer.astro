@@ -7,15 +7,13 @@ interface Props {
 }
 
 const { showContact = true } = Astro.props;
+const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer section--teal">
   <div class="container site-footer__inner">
     {showContact && <ContactLinks />}
-    <p class="site-footer__credit">
-      Built with Astro and Claude Code.{' '}
-      <a href="https://github.com/vero-romero428/portfolio">See the code on GitHub</a>.
-    </p>
+    <p class="site-footer__credit">&copy; {year} Veronica Romero</p>
   </div>
 </footer>
 
