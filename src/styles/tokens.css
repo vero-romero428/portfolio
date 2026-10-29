@@ -32,6 +32,7 @@
   --font-serif: "Crimson Pro", Georgia, "Times New Roman", serif;
   --font-sans: "Rethink Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 
+  --weight-extralight: 200;
   --weight-light: 300;
   --weight-regular: 400;
   --weight-medium: 500;

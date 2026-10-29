@@ -4,7 +4,6 @@ import Base from '../layouts/Base.astro';
 import Pillars from '../components/Pillars.astro';
 import WorkCard from '../components/WorkCard.astro';
 import ContactLinks from '../components/ContactLinks.astro';
-import { url } from '../utils/url';
 
 // Placeholder illustrations. Replaced with the real paintings in milestone 5.
 import Leaf from '../assets/illustrations/leaf.svg';
@@ -94,7 +93,14 @@ const work = (await getCollection('work'))
         I help organizations build the systems and processes that let their people do their
         best work.
       </p>
-      <p class="hero__more"><a href={url('about/')}>More about me <span aria-hidden="true">→</span></a></p>
+    </div>
+  </section>
+
+  <section class="section section--blue break" aria-labelledby="how-heading">
+    <Squiggle class="break__art" aria-hidden="true" />
+    <div class="container flow" style="--flow-space: var(--space-7)">
+      <h2 id="how-heading">How I work</h2>
+      <Pillars pillars={pillars} />
     </div>
   </section>
 
@@ -131,13 +137,6 @@ const work = (await getCollection('work'))
     </div>
   </section>
 
-  <section class="section section--blue break" aria-labelledby="how-heading">
-    <Squiggle class="break__art" aria-hidden="true" />
-    <div class="container flow" style="--flow-space: var(--space-7)">
-      <h2 id="how-heading">How I work</h2>
-      <Pillars pillars={pillars} />
-    </div>
-  </section>
 
   <section id="contact" class="section section--mist" aria-labelledby="contact-heading">
     <div class="container flow" style="--flow-space: var(--space-5)">
@@ -171,19 +170,17 @@ const work = (await getCollection('work'))
   }
 
   .hero__title h1 {
-    font-size: clamp(3rem, 0.6rem + 8.3vw, 7.5rem);
+    font-size: clamp(3rem, 0.6rem + 10vw, 9rem);
+    font-weight: var(--weight-extralight);
     line-height: 1;
   }
 
   .hero__role {
-    font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
-    font-weight: var(--weight-medium);
+    font-size: clamp(1.25rem, 0.5rem + 2.8vw, 3rem);
+    font-weight: var(--weight-regular);
+    line-height: var(--leading-tight);
     color: var(--mist);
-  }
-
-  .hero__more {
-    font-weight: var(--weight-medium);
-    --link-color: var(--white);
+    text-wrap: balance;
   }
 
   .hero__statement {
