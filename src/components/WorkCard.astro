@@ -6,16 +6,19 @@ interface Props {
   title: string;
   summary: string;
   org: string;
+  // h3 under a section heading (homepage), h2 directly under the page title (Work page)
+  headingLevel?: 2 | 3;
 }
 
-const { slug, title, summary, org } = Astro.props;
+const { slug, title, summary, org, headingLevel = 3 } = Astro.props;
+const Heading = `h${headingLevel}`;
 ---
 
 <article class="work-card flow" style="--flow-space: var(--space-3)">
   <p class="label">{org}</p>
-  <h3 class="work-card__title">
+  <Heading class="work-card__title">
     <a href={url(`work/${slug}/`)}>{title}</a>
-  </h3>
+  </Heading>
   <p>{summary}</p>
 </article>
 
@@ -28,7 +31,10 @@ const { slug, title, summary, org } = Astro.props;
     transition: transform 150ms ease;
   }
 
+  /* Same size whether the card title is an h2 or an h3 */
   .work-card__title {
+    font-size: var(--text-xl);
+    line-height: var(--leading-snug);
     color: var(--blue);
   }
 

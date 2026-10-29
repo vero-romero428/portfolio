@@ -1,11 +1,7 @@
-// Reshapes a case study's Markdown into the deck's layout while the site builds.
-// Each "##" heading starts a full-width section, and a few patterns in the
-// writing (phase headings, image notes, results, [gaps]) get their own styling.
-// Written by hand so it needs no extra dependency.
-
-// Sections alternate these backgrounds, except the ones named below
-const CYCLE = ['paper', 'mist'];
-const NAMED = { Results: 'teal', Reflection: 'blue' };
+// Reshapes a case study's Markdown while the site builds. Each "##" heading
+// starts its own section, all on the same background, and a few patterns in
+// the writing (phase headings, image notes, results, [gaps]) get their own
+// styling. Written by hand so it needs no extra dependency.
 
 const el = (tagName, className, children = []) => ({
   type: 'element',
@@ -125,30 +121,25 @@ function reshape(base) {
 
     const sections = [];
     let current = null;
-    let cycleIndex = 0;
 
     for (const node of tree.children) {
       if (node.type === 'element' && node.tagName === 'h2') {
-        const name = textOf(node).trim();
-        const tone = NAMED[name] || CYCLE[cycleIndex++ % CYCLE.length];
-        current = { name, tone, children: splitPhase(node) };
+        current = { name: textOf(node).trim(), children: splitPhase(node) };
         sections.push(current);
         continue;
       }
       if (!current) {
-        current = { name: '', tone: CYCLE[cycleIndex++ % CYCLE.length], children: [] };
+        current = { name: '', children: [] };
         sections.push(current);
       }
       current.children.push(imagePlaceholder(node) || node);
     }
 
-    tree.children = sections.map(({ name, tone, children }) => {
+    tree.children = sections.map(({ name, children }) => {
       let body = children;
       if (name === 'Results') styleResults(body);
       if (/stakeholder/i.test(name)) body = groupPanels(body);
-      const section = el('section', null, [el('div', 'container flow', body)]);
-      section.properties.className = ['section', `section--${tone}`, 'cs-section'];
-      return section;
+      return el('section', 'cs-section', [el('div', 'container flow', body)]);
     });
   };
 }

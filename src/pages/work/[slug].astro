@@ -19,37 +19,54 @@ const { Content } = await render(entry);
 ---
 
 <Base title={`${title} | Veronica Romero`} description={summary}>
-  <article>
-    <header class="section section--teal cs-hero">
+  <!-- The whole case study sits on one calm background so the writing leads -->
+  <article class="section--paper cs">
+    <header class="cs-hero">
       <div class="container flow" style="--flow-space: var(--space-5)">
+        <p><a class="cs-back" href={url('work/')}>All work</a></p>
         <p class="label">{org}, {context}</p>
         <h1>{title}</h1>
-        <p class="lede cs-hero__summary">{summary}</p>
+        <p class="lede">{summary}</p>
       </div>
     </header>
 
     <Content />
-  </article>
 
-  <nav class="section section--paper cs-next" aria-label="Next case study">
-    <div class="container flow" style="--flow-space: var(--space-2)">
-      <p class="label">Next case study</p>
-      <p class="cs-next__title">
-        <a href={url(`work/${next.id}/`)}>{next.data.title}</a>
-      </p>
-      <p class="cs-next__home"><a href={url('#work')}>Back to all work</a></p>
-    </div>
-  </nav>
+    <nav class="cs-next" aria-label="Next case study">
+      <div class="container flow" style="--flow-space: var(--space-2)">
+        <p class="label">Next case study</p>
+        <p class="cs-next__title">
+          <a href={url(`work/${next.id}/`)}>{next.data.title}</a>
+        </p>
+      </div>
+    </nav>
+  </article>
 </Base>
 
 <style>
+  .cs-hero {
+    padding-top: clamp(var(--space-7), 8vw, var(--space-9));
+    padding-bottom: var(--space-6);
+  }
+
   .cs-hero h1 {
     font-size: var(--text-2xl);
     max-width: 22ch;
   }
 
-  .cs-hero__summary {
-    color: var(--mist);
+  .cs-back {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--ink);
+  }
+
+  .cs-next {
+    padding-block: var(--space-8);
+  }
+
+  .cs-next .container {
+    padding-top: var(--space-6);
+    border-top: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
   }
 
   .cs-next__title {
@@ -57,9 +74,5 @@ const { Content } = await render(entry);
     font-size: var(--text-xl);
     line-height: var(--leading-snug);
     --link-color: var(--blue);
-  }
-
-  .cs-next__home {
-    padding-top: var(--space-4);
   }
 </style>

@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import WorkCard from '../../components/WorkCard.astro';
+
+// Every case study, including ones hidden from the homepage
+const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base title="Work | Veronica Romero" description="Case studies by Veronica Romero.">
+  <section class="section section--paper work-index" aria-labelledby="work-title">
+    <div class="container flow" style="--flow-space: var(--space-7)">
+      <h1 id="work-title">Work</h1>
+      <div class="work-grid">
+        {
+          work.map((entry) => (
+            <WorkCard
+              slug={entry.id}
+              title={entry.data.title}
+              summary={entry.data.summary}
+              org={entry.data.org}
+              headingLevel={2}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .work-index {
+    min-height: 60vh;
+  }
+
+  .work-grid {
+    display: grid;
+    gap: var(--space-5);
+    --card-bg: var(--mist);
+  }
+
+  @media (min-width: 48rem) {
+    .work-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
