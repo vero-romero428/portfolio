@@ -1,15 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import Pillars from '../components/Pillars.astro';
 import WorkCard from '../components/WorkCard.astro';
 import ContactLinks from '../components/ContactLinks.astro';
 
 // Placeholder illustrations. Replaced with the real paintings in milestone 5.
 import Leaf from '../assets/illustrations/leaf.svg';
 import Petal from '../assets/illustrations/petal.svg';
-import Burst from '../assets/illustrations/burst.svg';
-import Squiggle from '../assets/illustrations/squiggle.svg';
 import Dots from '../assets/illustrations/dots.svg';
 
 // Matter of fact and outcome driven
@@ -40,24 +37,6 @@ const problems = [
   },
 ];
 
-const pillars = [
-  {
-    title: 'Turning ambiguity into programs',
-    body: "I take organizational problems that don't have a shape yet and turn them into structured, measurable initiatives. I start with the data, build the case, and design toward outcomes I can track.",
-    icon: Burst,
-  },
-  {
-    title: 'Partnering with leadership',
-    body: 'I work top-down with executives to align on priorities and build the investment case, and bottom-up with the people doing the work to find where friction actually lives.',
-    icon: Petal,
-  },
-  {
-    title: 'Closing the design to engineering gap',
-    body: 'I partner with both design and engineering leadership to improve the rituals that reduce handoff friction and help disciplines work better together.',
-    icon: Leaf,
-  },
-];
-
 const work = (await getCollection('work'))
   .filter((entry) => entry.data.onHomepage)
   .sort((a, b) => a.data.order - b.data.order);
@@ -77,18 +56,12 @@ const work = (await getCollection('work'))
         <h1 id="hero-name">Veronica Romero</h1>
         <p class="hero__role">Design operations and people experience leader</p>
       </hgroup>
-      <p class="hero__statement">
+      <p class="hero__intro">
         I help organizations build the systems and processes that let their people do their
-        best work.
+        best work. I partner with leadership to set priorities, then turn them into programs
+        teams actually use, from career frameworks and quality standards to AI fluency and team
+        rituals.
       </p>
-    </div>
-  </section>
-
-  <section class="section section--blue break" aria-labelledby="how-heading">
-    <Squiggle class="break__art" aria-hidden="true" />
-    <div class="container flow" style="--flow-space: var(--space-7)">
-      <h2 id="how-heading">How I work</h2>
-      <Pillars pillars={pillars} />
     </div>
   </section>
 
@@ -125,7 +98,6 @@ const work = (await getCollection('work'))
     </div>
   </section>
 
-
   <section id="contact" class="section section--mist" aria-labelledby="contact-heading">
     <div class="container flow" style="--flow-space: var(--space-5)">
       <h2 id="contact-heading">Let's talk</h2>
@@ -151,10 +123,10 @@ const work = (await getCollection('work'))
     z-index: 1;
   }
 
-  /* Name very big, with the subtitle tucked in close underneath */
+  /* Name very big, with the label tucked in close underneath */
   .hero__title {
     display: grid;
-    gap: var(--space-2);
+    gap: var(--space-3);
   }
 
   .hero__title h1 {
@@ -164,21 +136,21 @@ const work = (await getCollection('work'))
   }
 
   .hero__role {
-    font-size: clamp(1rem, 0.4rem + 2.25vw, 2.4rem);
+    font-size: clamp(0.875rem, 0.6rem + 1.1vw, 1.5rem);
     font-weight: var(--weight-regular);
-    line-height: var(--leading-tight);
+    line-height: var(--leading-snug);
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     color: var(--mist);
     text-wrap: balance;
   }
 
-  .hero__statement {
+  .hero__intro {
     font-family: var(--font-serif);
     font-weight: var(--weight-light);
-    font-size: var(--text-xl);
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
     line-height: var(--leading-snug);
-    max-width: 30ch;
+    max-width: 42ch;
   }
 
   /* Illustrations sit at the edges, slightly off the page, as if placed by hand */
@@ -223,29 +195,6 @@ const work = (await getCollection('work'))
       width: 5rem;
       bottom: -2rem;
       right: -1.5rem;
-    }
-  }
-
-  /* Section break illustration */
-  .break {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .break :global(.break__art) {
-    position: absolute;
-    top: var(--space-6);
-    right: -2rem;
-    width: clamp(8rem, 18vw, 14rem);
-    transform: rotate(-8deg);
-    pointer-events: none;
-  }
-
-  @media (max-width: 40rem) {
-    .break :global(.break__art) {
-      top: var(--space-4);
-      width: 6rem;
-      opacity: 0.8;
     }
   }
 

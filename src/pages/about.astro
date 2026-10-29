@@ -31,6 +31,25 @@ const roles = [
   },
 ];
 
+// Method, moved here from the homepage
+const howIWork = [
+  {
+    title: 'Turning ambiguity into programs',
+    body: "I take organizational problems that don't have a shape yet and turn them into structured, measurable initiatives. I start with the data, build the case, and design toward outcomes I can track.",
+    icon: Burst,
+  },
+  {
+    title: 'Partnering with leadership',
+    body: 'I work top-down with executives to align on priorities and build the investment case, and bottom-up with the people doing the work to find where friction actually lives.',
+    icon: Petal,
+  },
+  {
+    title: 'Closing the design to engineering gap',
+    body: 'I partner with both design and engineering leadership to improve the rituals that reduce handoff friction and help disciplines work better together.',
+    icon: Leaf,
+  },
+];
+
 // From my previous site, lightly edited. To be revised in the copy pass.
 const principles = [
   {
@@ -102,15 +121,22 @@ const principles = [
     </div>
   </section>
 
-  <section class="section section--blue break" aria-labelledby="principles-heading">
+  <section class="section section--blue break" aria-labelledby="how-heading">
     <Squiggle class="break__art" aria-hidden="true" />
+    <div class="container flow" style="--flow-space: var(--space-7)">
+      <h2 id="how-heading">How I work</h2>
+      <Pillars pillars={howIWork} />
+    </div>
+  </section>
+
+  <section class="section section--mist" aria-labelledby="principles-heading">
     <div class="container flow" style="--flow-space: var(--space-7)">
       <h2 id="principles-heading">My leadership principles</h2>
       <Pillars pillars={principles} />
     </div>
   </section>
 
-  <section class="section section--mist" aria-labelledby="desk-heading">
+  <section class="section section--paper" aria-labelledby="desk-heading">
     <div class="container about-desk">
       <div class="flow" style="--flow-space: var(--space-5)">
         <h2 id="desk-heading">When I'm not at my desk, you can find me…</h2>
